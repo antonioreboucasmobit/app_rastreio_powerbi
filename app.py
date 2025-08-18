@@ -21,6 +21,18 @@ CSV_FILE = 'dados_acessos.csv'
 def home():
     return '🟢 Servidor de rastreamento ativo. Use /pixel.gif?relatorio=SeuRelatorio'
 
+@app.route('/page')
+def page():
+    relatorio = request.args.get('relatorio', 'IframeRelatorio')
+    return f"""
+    <html>
+    <body>
+        <img src="/pixel.gif?relatorio={relatorio}" style="display:none;" />
+    </body>
+    </html>
+    """
+
+
 @app.route('/pixel.gif')
 def pixel():
     relatorio = request.args.get('relatorio', 'desconhecido')
