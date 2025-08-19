@@ -20,7 +20,6 @@ logging.basicConfig(
 GOOGLE_SHEETS_WEBHOOK = "https://script.google.com/macros/s/AKfycbz6ZbsG6FMih2ZKm3wc3cUGSoCMXeG7m2ako6h20Y2fNqHx5FgtK7CNmcVaVsgENxd8XA/exec"
 
 
-
 CSV_FILE = 'dados_acessos.csv'
 
 @app.route('/')
@@ -112,6 +111,7 @@ def mostrar_logs():
     except Exception as e:
         return f"Erro ao ler log: {e}", 500
 
+
 @app.route('/status_server')
 def status_server():
     try:
@@ -127,8 +127,6 @@ def status_server():
             "message": f"Erro interno: {str(e)}"
         }), 500
 
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
-
-
