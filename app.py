@@ -115,7 +115,7 @@ def mostrar_logs():
 @app.route('/status_server')
 def status_server():
     try:
-        now = datetime.datetime.utcnow().isoformat() + "Z"
+        now = datetime.utcnow().isoformat() + "Z"
         return jsonify({
             "status": "ok",
             "timestamp": now,
