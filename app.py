@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, jsonify
 import logging
 import io
 import base64
@@ -122,4 +122,5 @@ def status_server():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
 
