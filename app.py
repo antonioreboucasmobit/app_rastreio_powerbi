@@ -114,13 +114,21 @@ def mostrar_logs():
 
 @app.route('/status_server')
 def status_server():
-    return jsonify({
-        "status": "ok",
-        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
-        "message": "Servidor online e funcional"
-    })
+    try:
+        now = datetime.datetime.utcnow().isoformat() + "Z"
+        return jsonify({
+            "status": "ok",
+            "timestamp": now,
+            "message": "Servidor online e funcional"
+        }), 200
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": f"Erro interno: {str(e)}"
+        }), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
 
 
