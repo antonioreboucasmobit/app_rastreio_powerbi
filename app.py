@@ -112,5 +112,14 @@ def mostrar_logs():
     except Exception as e:
         return f"Erro ao ler log: {e}", 500
 
+@app.route('/status_server')
+def status_server():
+    return jsonify({
+        "status": "ok",
+        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "message": "Servidor online e funcional"
+    })
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
