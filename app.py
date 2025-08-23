@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file, jsonify
+from flask import Flask, request, send_file, jsonify, send_from_directory
 import logging
 import io
 import base64
@@ -127,6 +127,15 @@ def status_server():
             "message": f"Erro interno: {str(e)}"
         }), 500
 
+@app.route('/imagem')
+def get_imagem():
+    try:
+        return send_file("acesso_btn.png", mimetype='image/png')
+    except FileNotFoundError:
+        return jsonify({
+            "status": "error",
+            "message": "Imagem não encontrada"
+        }), 404
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
